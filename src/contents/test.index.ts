@@ -1,8 +1,9 @@
+import { TypeParamsContent } from "../type"
+
 export default {
-  filename: `./test/index.js`,
+  filename: `test/index.js`,
   command: ``,
-  havePureContent: false,
-  content: () => {
-    return "require(`..`)"
+  content: ({ previousContent, projectName }: TypeParamsContent) => {
+    return `require("..")`
   }
 }

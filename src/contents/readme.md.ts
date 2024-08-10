@@ -1,8 +1,9 @@
+import { TypeParamsContent } from "../type"
+
 export default {
   filename: `README.md`,
   command: ``,
-  havePureContent: false,
-  content: () => {
-    return `<h1 align="center">YOUR-PROJECT-NAME</h1>`
+  content: ({ previousContent, projectName }: TypeParamsContent) => {
+    return `<h1 align="center">${projectName}</h1>`
   }
 }

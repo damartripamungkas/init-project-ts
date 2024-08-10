@@ -1,8 +1,9 @@
+import { TypeParamsContent } from "../type"
+
 export default {
   filename: `.gitignore`,
   command: ``,
-  havePureContent: false,
-  content: () => {
+  content: ({ previousContent, projectName }: TypeParamsContent) => {
     return `node_modules
     dist`
   }

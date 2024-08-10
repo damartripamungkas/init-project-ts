@@ -1,11 +1,12 @@
+import { TypeParamsContent } from "../type"
+
 export default {
   filename: `LICENSE`,
   command: ``,
-  havePureContent: false,
-  content: () => {
+  content: ({ previousContent, projectName }: TypeParamsContent) => {
     return `MIT License
 
-Copyright (c) 2024 YOUR-NAME
+Copyright (c) 2025 ${projectName}
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

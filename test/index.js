@@ -1,1 +1,1 @@
-const run = require(`..`)
+require(`..`)

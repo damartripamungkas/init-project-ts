@@ -16,19 +16,19 @@
   </a>
 </p>
 
+<p align="center">
+    <img src="./screenshots/run.png">
+</p>
+
 ### 📖 Description :
 
-This package is made for those who want to initialize a typescript project without having to create files and install packages 1 by 1.
+This package is made for those who want to quickly initialize a typescript project without having to manually create files and install packages.
 
 ### 💻 Step to install :
 
 ```
 npm install -g init-project-ts
 ```
-
-### ✏️ Example :
-
-<img src="./screenshots/run.png">
 
 ### 🧾 Pre-Requisistes :
 

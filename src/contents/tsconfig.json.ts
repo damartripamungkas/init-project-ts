@@ -1,8 +1,9 @@
+import { TypeParamsContent } from "../type"
+
 export default {
   filename: `tsconfig.json`,
   command: ``,
-  havePureContent: false,
-  content: () => {
+  content: ({ previousContent, projectName }: TypeParamsContent) => {
     return JSON.stringify(
       {
         compilerOptions: {

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import prompts from "prompts"
-import { join } from "node:path"
+import { basename, join } from "node:path"
 import { execSync } from "node:child_process"
-import { readFileSync, writeFileSync } from "node:fs"
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs"
 import allContents from "./contents/_index"
 
 const createPrompts = async () => {
@@ -43,7 +43,7 @@ const run = async () => {
   const ora = (await import(`ora`)).default
   const resAll = await createPrompts()
   for (let index = 0; index < resAll.length; index++) {
-    const { filename, command, havePureContent, content, answer } = resAll[index]
+    const { filename, command, content, answer } = resAll[index]
     if (answer === false) {
       continue
     }
@@ -56,11 +56,27 @@ const run = async () => {
 
     let readFile
     const pathFile = join(process.cwd(), filename)
-    if (havePureContent === true) {
+    if (existsSync(pathFile) === true) {
       readFile = JSON.parse(readFileSync(pathFile, { encoding: `utf8` }))
     }
-    writeFileSync(pathFile, content(readFile), { encoding: `utf8` })
+
+    if (filename.includes(`/`)) {
+      const [folder] = filename.split(`/`)
+      mkdirSync(folder, { recursive: true })
+    }
+
+    writeFileSync(
+      pathFile,
+      content({
+        previousContent: readFile,
+        projectName: basename(process.cwd())
+      }),
+      { encoding: `utf8` }
+    )
   }
+
+  writeFileSync(join(process.cwd(), `src`, `index.ts`), ``, { encoding: `utf8` })
+  writeFileSync(join(process.cwd(), `test`, `index.js`), `require("..")`, { encoding: `utf8` })
 }
 
 run()

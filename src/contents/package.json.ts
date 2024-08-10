@@ -1,11 +1,12 @@
+import { TypeParamsContent } from "../type"
+
 export default {
   filename: `package.json`,
   command: ``,
-  havePureContent: false,
-  content: () => {
+  content: ({ previousContent, projectName }: TypeParamsContent) => {
     return JSON.stringify(
       {
-        name: "YOUR-PROJECT-NAME",
+        name: projectName,
         version: "1.0.0",
         description: "",
         scripts: {
@@ -14,13 +15,13 @@ export default {
           start: "node ./dist/src/index.js",
           publish_npm: "npm run build && npm publish"
         },
-        homepage: "https://github.com/USERNAME/PROJECT",
+        homepage: `https://github.com/USERNAME/${projectName}`,
         repository: {
           type: "git",
-          url: "https://github.com/USERNAME/PROJECT.git"
+          url: `https://github.com/USERNAME/${projectName}.git`
         },
         bugs: {
-          url: "https://github.com/USERNAME/PROJECT/issues"
+          url: `https://github.com/USERNAME/${projectName}/issues`
         },
         keywords: [],
         main: "./dist/src/index.js",
