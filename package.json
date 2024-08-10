@@ -1,0 +1,50 @@
+{
+  "name": "init-project-ts",
+  "version": "1.0.0",
+  "description": "Init fast project typescript",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsup",
+    "start": "node ./dist/src/index.js",
+    "publish_npm": "npm run build && npm publish --access public"
+  },
+  "homepage": "https://github.com/damartripamungkas/init-project-ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/damartripamungkas/init-project-ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/damartripamungkas/init-project-ts/issues"
+  },
+  "keywords": [
+    "init-project-typescript",
+    "init-project-ts",
+    "i-t-p",
+    "itp",
+    "typescript",
+    "backend",
+    "frontend",
+    "browser"
+  ],
+  "bin": "./dist/src/index.js",
+  "main": "./dist/src/index.js",
+  "module": "./dist/src/index.mjs",
+  "types": "./dist/src/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "author": "damartripamungkas",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.2.0",
+    "@types/prompts": "^2.4.9",
+    "@typescript-eslint/eslint-plugin": "^8.0.1",
+    "@typescript-eslint/parser": "^8.0.1",
+    "eslint": "^9.9.0",
+    "tsup": "^8.2.4"
+  },
+  "dependencies": {
+    "ora": "^8.0.1",
+    "prompts": "^2.4.2"
+  }
+}

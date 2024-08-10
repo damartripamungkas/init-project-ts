@@ -1,0 +1,23 @@
+{
+  "name": "your-project-name",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsup",
+    "test": "node ./test/index.js",
+    "start": "node ./dist/src/index.js",
+    "publish_npm": "npm run build && npm publish"
+  },
+  "keywords": [],
+  "main": "./dist/src/index.js",
+  "module": "./dist/src/index.mjs",
+  "types": "./dist/src/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "author": "YOUR_NAME",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "tsup": "^8.2.4"
+  }
+}
