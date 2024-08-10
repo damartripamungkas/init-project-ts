@@ -74,9 +74,6 @@ const run = async () => {
       { encoding: `utf8` }
     )
   }
-
-  writeFileSync(join(process.cwd(), `src`, `index.ts`), ``, { encoding: `utf8` })
-  writeFileSync(join(process.cwd(), `test`, `index.js`), `require("..")`, { encoding: `utf8` })
 }
 
 run()
