@@ -5,6 +5,6 @@ export default {
   command: ``,
   content: ({ previousContent, projectName }: TypeParamsContent) => {
     return `node_modules
-    dist`
+dist`
   }
 }

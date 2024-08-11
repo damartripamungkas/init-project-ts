@@ -1,9 +1,9 @@
 import { TypeParamsContent } from "../type"
 
 export default {
-  filename: `src/index.ts`,
+  filename: `config/config.json`,
   command: ``,
   content: ({ previousContent, projectName }: TypeParamsContent) => {
-    return `import "./core/index.ts"`
+    return JSON.stringify({})
   }
 }

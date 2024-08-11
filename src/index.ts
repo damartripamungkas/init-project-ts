@@ -38,6 +38,7 @@ const run = async () => {
 ██║╚════╝██╔═══╝ ╚════╝██║   
 ██║      ██║           ██║   
 ╚═╝      ╚═╝           ╚═╝   
+https://github.com/damartripamungkas/init-project-ts
 `)
 
   const ora = (await import(`ora`)).default
@@ -61,8 +62,8 @@ const run = async () => {
     }
 
     if (filename.includes(`/`)) {
-      const [folder] = filename.split(`/`)
-      mkdirSync(folder, { recursive: true })
+      const onlyFolder = filename.slice(0, filename.lastIndexOf(`/`))
+      mkdirSync(onlyFolder, { recursive: true })
     }
 
     writeFileSync(
@@ -74,6 +75,8 @@ const run = async () => {
       { encoding: `utf8` }
     )
   }
+
+  ora(`Success installing all files\n`).succeed()
 }
 
 run()
