@@ -13,7 +13,8 @@ import file_12 from "./src.libs.index"
 import file_13 from "./src.types.config"
 import file_14 from "./src.utils.int"
 import file_15 from "./src.core.index"
-import file_16 from "./config.config.json"
-import file_17 from "./test.index"
+import file_16 from "./src.components.index"
+import file_17 from "./config.config.json"
+import file_18 from "./test.index"
 
-export default [file_1, file_2, file_3, file_4, file_5, file_6, file_7, file_8, file_9, file_10, file_11, file_12, file_13, file_14, file_15, file_16, file_17]
+export default [file_1, file_2, file_3, file_4, file_5, file_6, file_7, file_8, file_9, file_10, file_11, file_12, file_13, file_14, file_15, file_16, file_17, file_18]
