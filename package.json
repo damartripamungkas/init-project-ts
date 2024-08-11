@@ -1,6 +1,6 @@
 {
   "name": "init-project-ts",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "Init fast project typescript",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,8 +19,8 @@
   "keywords": [
     "init-project-typescript",
     "init-project-ts",
-    "i-t-p",
-    "itp",
+    "i-p-t",
+    "ipt",
     "typescript",
     "backend",
     "frontend",
