@@ -76,6 +76,10 @@ https://github.com/damartripamungkas/init-project-ts
     )
   }
 
+  const defaultInstall = [`npm i @types/node --force --save-dev`]
+  defaultInstall.forEach((cmd) => {
+    execSync(cmd, { stdio: `inherit` })
+  })
   ora(`Success installing all files\n`).succeed()
 }
 
