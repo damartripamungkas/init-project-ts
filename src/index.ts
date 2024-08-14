@@ -49,6 +49,7 @@ https://github.com/damartripamungkas/init-project-ts
       continue
     }
 
+    // running command prompt if required
     if (command.length > 1) {
       const loading = ora(`Installing with command for ${filename} \n`).start()
       const res = execSync(command, { stdio: `inherit` })
@@ -61,11 +62,13 @@ https://github.com/damartripamungkas/init-project-ts
       readFile = JSON.parse(readFileSync(pathFile, { encoding: `utf8` }))
     }
 
+    // create folder if required
     if (filename.includes(`/`)) {
       const onlyFolder = filename.slice(0, filename.lastIndexOf(`/`))
       mkdirSync(onlyFolder, { recursive: true })
     }
 
+    // write content to file
     writeFileSync(
       pathFile,
       content({
@@ -74,6 +77,14 @@ https://github.com/damartripamungkas/init-project-ts
       }),
       { encoding: `utf8` }
     )
+
+    // default command for install like @types/node
+    if (filename == `package.json`) {
+      const defaultCommand = [`npm i @types/node --force --save-dev`]
+      defaultCommand.forEach((cmd) => {
+        execSync(cmd, { stdio: `inherit` })
+      })
+    }
   }
 
   ora(`Success installing all files\n`).succeed()
