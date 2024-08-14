@@ -2,7 +2,7 @@ import { TypeParamsContent } from "../type"
 
 export default {
   filename: `package.json`,
-  command: ``,
+  command: `npm i @types/node --force --save-dev`,
   content: ({ previousContent, projectName }: TypeParamsContent) => {
     return JSON.stringify(
       {
