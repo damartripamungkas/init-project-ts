@@ -3,7 +3,7 @@ import { TypeParamsContent } from "../type"
 export default {
   filename: `CODE_OF_CONDUCT.md`,
   command: ``,
-  content: ({ previousContent, projectName }: TypeParamsContent) => {
+  content: ({ previousContent }: TypeParamsContent) => {
     return `# Contributor Covenant Code of Conduct
 
 ## Our Pledge

@@ -3,7 +3,7 @@ import { TypeParamsContent } from "../type"
 export default {
   filename: `CONTRIBUTING.md`,
   command: ``,
-  content: ({ previousContent, projectName }: TypeParamsContent) => {
+  content: ({ previousContent }: TypeParamsContent) => {
     return `# Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via issue,

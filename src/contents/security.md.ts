@@ -3,14 +3,15 @@ import { TypeParamsContent } from "../type"
 export default {
   filename: `SECURITY.md`,
   command: ``,
-  content: ({ previousContent, projectName }: TypeParamsContent) => {
+  content: ({ previousContent }: TypeParamsContent) => {
     return `# Security Policy
 
 ## Supported Versions
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 1.0.x   | :white_check_mark: |
+| 1.x.x   | :white_check_mark: |
+| 2.x.x   | :white_check_mark: |
 
 ## Reporting a Vulnerability
 

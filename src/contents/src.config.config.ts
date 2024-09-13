@@ -3,7 +3,7 @@ import { TypeParamsContent } from "../type"
 export default {
   filename: `src/config/config.ts`,
   command: ``,
-  content: ({ previousContent, projectName }: TypeParamsContent) => {
+  content: ({ previousContent }: TypeParamsContent) => {
     return `import { join } from "node:path"
 import { readFileSync } from "node:fs"
 import { TypeConfig } from "../types/config";

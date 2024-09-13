@@ -3,7 +3,7 @@ import { TypeParamsContent } from "../type"
 export default {
   filename: `.prettierrc`,
   command: ``,
-  content: ({ previousContent, projectName }: TypeParamsContent) => {
+  content: ({ previousContent }: TypeParamsContent) => {
     return JSON.stringify(
       {
         overrides: [

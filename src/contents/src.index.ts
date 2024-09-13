@@ -3,7 +3,9 @@ import { TypeParamsContent } from "../type"
 export default {
   filename: `src/index.ts`,
   command: ``,
-  content: ({ previousContent, projectName }: TypeParamsContent) => {
-    return `import "./core/index.ts"`
+  content: ({ previousContent }: TypeParamsContent) => {
+    return `import context from "./core/index"
+export default context
+`
   }
 }
