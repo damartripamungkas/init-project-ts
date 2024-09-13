@@ -1,6 +1,6 @@
 {
   "name": "init-project-ts",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "Init fast project typescript",
   "scripts": {
     "test": "vitest && node ./test/index.js",
@@ -22,6 +22,8 @@
     "i-p-t",
     "ipt",
     "typescript",
+    "node",
+    "bun",
     "backend",
     "frontend",
     "browser"
