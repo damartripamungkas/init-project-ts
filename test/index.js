@@ -1,5 +1,5 @@
-/**
- * step_1 = point the current path to this folder (test)
- * step_2 = run with command: node index.js
- */
-require("..")
+const { basename } = require(`node:path`)
+const base = basename(process.cwd())
+if (base == `test`) {
+  require(`..`)
+}
