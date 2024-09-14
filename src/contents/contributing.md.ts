@@ -2,7 +2,9 @@ import { TypeParamsContent } from "../type"
 
 export default {
   filename: `CONTRIBUTING.md`,
-  command: ``,
+  command: () => {
+    return ``
+  },
   content: ({ previousContent }: TypeParamsContent) => {
     return `# Contributing
 

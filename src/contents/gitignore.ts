@@ -2,7 +2,9 @@ import { TypeParamsContent } from "../type"
 
 export default {
   filename: `.gitignore`,
-  command: ``,
+  command: () => {
+    return ``
+  },
   content: ({ previousContent }: TypeParamsContent) => {
     return `node_modules
 dist

@@ -2,7 +2,9 @@ import { TypeParamsContent } from "../type"
 
 export default {
   filename: `src/utils/int.ts`,
-  command: ``,
+  command: () => {
+    return ``
+  },
   content: ({ previousContent }: TypeParamsContent) => {
     return `type TypeInt = number | bigint
 export const formatToHex = (v: TypeInt) => {

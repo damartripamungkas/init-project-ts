@@ -1,9 +1,11 @@
-import { getState } from "../common/state"
+import { getState } from "../libs/state"
 import { TypeParamsContent } from "../type"
 
 export default {
   filename: `LICENSE`,
-  command: ``,
+  command: () => {
+    return ``
+  },
   content: ({ previousContent }: TypeParamsContent) => {
     const projectName = getState(`projectName`)
     return `MIT License

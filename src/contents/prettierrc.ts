@@ -2,7 +2,9 @@ import { TypeParamsContent } from "../type"
 
 export default {
   filename: `.prettierrc`,
-  command: ``,
+  command: () => {
+    return ``
+  },
   content: ({ previousContent }: TypeParamsContent) => {
     return JSON.stringify(
       {

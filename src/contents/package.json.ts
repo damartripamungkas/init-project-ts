@@ -1,9 +1,11 @@
-import { getState } from "../common/state"
+import { getState } from "../libs/state"
 import { TypeParamsContent } from "../type"
 
 export default {
   filename: `package.json`,
-  command: ``,
+  command: () => {
+    return ``
+  },
   content: ({ previousContent }: TypeParamsContent) => {
     const projectName = getState(`projectName`)
     const projectRuntime = getState(`projectRuntime`)
@@ -38,7 +40,9 @@ export default {
     }
 
     if (projectRuntime == `bun`) {
-      obj[`type`] = `module`
+      obj.type = `module`
+      obj.scripts.test = `bun test --watch`
+      obj.scripts.start = `bun ./src/index.ts`
     }
 
     return JSON.stringify(obj, null, 2)

@@ -2,7 +2,9 @@ import { TypeParamsContent } from "../type"
 
 export default {
   filename: `src/core/index.ts`,
-  command: ``,
+  command: () => {
+    return ``
+  },
   content: ({ previousContent }: TypeParamsContent) => {
     return `export default () => {
   return {

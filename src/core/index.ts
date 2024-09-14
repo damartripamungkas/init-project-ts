@@ -1,8 +1,8 @@
 import prompts from "prompts"
 import { execSync } from "node:child_process"
 import { basename, join } from "node:path"
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs"
-import { setState } from "../common/state"
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs"
+import { getState, setState } from "../libs/state"
 import allContents from "../contents/_index"
 const packageJson = require(`../../package.json`)
 
@@ -26,7 +26,7 @@ const createPrompts = async () => {
     ],
     initial: 0
   })
-  setState(`projectRuntime`, twoSelect.value)
+  setState(`projectRuntime`, twoSelect)
 
   const params = allContents.map((it, index) => {
     return {
@@ -67,14 +67,15 @@ https://github.com/damartripamungkas/init-project-ts
   const resAll = await createPrompts()
   for (let index = 0; index < resAll.length; index++) {
     const { filename, command, content, answer } = resAll[index]
+    const cmd = command()
     if (answer === false) {
       continue
     }
 
     // running command prompt if required
-    if (command.length > 1) {
+    if (cmd.length > 1) {
       const loading = ora(`Installing with command for ${filename} \n`).start()
-      const res = execSync(command, { stdio: `inherit` })
+      const res = execSync(cmd, { stdio: `inherit` })
       loading.succeed(`Success installing ${filename}: ${res === null ? `` : res.toString()}`)
     }
 
@@ -105,6 +106,15 @@ https://github.com/damartripamungkas/init-project-ts
       defaultCommand.forEach((cmd) => {
         execSync(cmd, { stdio: `inherit` })
       })
+
+      // migrations package-lock.json to bunlock
+      if (getState(`projectRuntime`) == `bun`) {
+        execSync(`bun i`, { stdio: `inherit` })
+        ora(`Success migrations package-lock.json to bun.lockb\n`).succeed()
+
+        const pathJsonLock = join(process.cwd(), `package-lock.json`)
+        rmSync(pathJsonLock, { force: true, recursive: true })
+      }
     }
   }
 

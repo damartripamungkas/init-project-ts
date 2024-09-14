@@ -2,8 +2,10 @@ import { TypeParamsContent } from "../type"
 
 export default {
   filename: `tsup.config.ts`,
-  command: `npm i tsup --force --save-dev`,
-  content: ({ previousContent, projectName }: TypeParamsContent) => {
+  command: () => {
+    return `npm i tsup --force --save-dev`
+  },
+  content: ({ previousContent }: TypeParamsContent) => {
     return `import { defineConfig } from "tsup"
 export default defineConfig({
   outDir: "./dist/src",

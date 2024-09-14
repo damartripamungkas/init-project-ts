@@ -1,9 +1,11 @@
-import { getState } from "../common/state"
+import { getState } from "../libs/state"
 import { TypeParamsContent } from "../type"
 
 export default {
   filename: `tsconfig.json`,
-  command: ``,
+  command: () => {
+    return ``
+  },
   content: ({ previousContent }: TypeParamsContent) => {
     const projectRuntime = getState(`projectRuntime`)
     if (projectRuntime == `bun`) {
