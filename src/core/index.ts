@@ -99,25 +99,27 @@ https://github.com/damartripamungkas/init-project-ts
       }),
       { encoding: `utf8` }
     )
+  }
 
-    // default command for install like @types/node
-    if (filename == `package.json`) {
-      const defaultCommandNode = [`npm i @types/node --force --save-dev`]
-      defaultCommandNode.forEach((cmd) => {
+  const answerPackageJson = resAll.find((it) => it.filename == `package.json`)
+  if (answerPackageJson.answer === true) {
+    // default command for install in runtime "node" like @types/node
+    const defaultCommandNode = [`npm i @types/node --force --save-dev`]
+    defaultCommandNode.forEach((cmd) => {
+      execSync(cmd, { stdio: `inherit` })
+    })
+    ora(`Success install default command for runtime node\n`).succeed()
+
+    // default command for install in runtime "bun" like @types/node
+    if (getState(`projectRuntime`) == `bun`) {
+      const defaultCommandBun = [`bun i`, `bun add -d @types/bun`]
+      defaultCommandBun.forEach((cmd) => {
         execSync(cmd, { stdio: `inherit` })
       })
+      ora(`Success install default command for runtime bun\n`).succeed()
 
-      // migrations package-lock.json to bunlock
-      if (getState(`projectRuntime`) == `bun`) {
-        const defaultCommandBun = [`bun i`, `bun add -d @types/bun`]
-        defaultCommandBun.forEach((cmd) => {
-          execSync(cmd, { stdio: `inherit` })
-        })
-        ora(`Success migrations package-lock.json to bun.lockb\n`).succeed()
-
-        const pathJsonLock = join(process.cwd(), `package-lock.json`)
-        rmSync(pathJsonLock, { force: true, recursive: true })
-      }
+      const pathJsonLock = join(process.cwd(), `package-lock.json`)
+      rmSync(pathJsonLock, { force: true, recursive: true })
     }
   }
 
