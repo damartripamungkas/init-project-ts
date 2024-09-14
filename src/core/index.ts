@@ -102,14 +102,17 @@ https://github.com/damartripamungkas/init-project-ts
 
     // default command for install like @types/node
     if (filename == `package.json`) {
-      const defaultCommand = [`npm i @types/node --force --save-dev`]
-      defaultCommand.forEach((cmd) => {
+      const defaultCommandNode = [`npm i @types/node --force --save-dev`]
+      defaultCommandNode.forEach((cmd) => {
         execSync(cmd, { stdio: `inherit` })
       })
 
       // migrations package-lock.json to bunlock
       if (getState(`projectRuntime`) == `bun`) {
-        execSync(`bun i`, { stdio: `inherit` })
+        const defaultCommandBun = [`bun i`, `bun add -d @types/bun`]
+        defaultCommandBun.forEach((cmd) => {
+          execSync(cmd, { stdio: `inherit` })
+        })
         ora(`Success migrations package-lock.json to bun.lockb\n`).succeed()
 
         const pathJsonLock = join(process.cwd(), `package-lock.json`)
