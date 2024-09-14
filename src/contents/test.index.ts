@@ -1,16 +1,17 @@
 import { getState } from "../libs/state"
 import { TypeParamsContent } from "../type"
-const projectRuntime = getState(`projectRuntime`)
 
 export default {
   filename: `test/index.test.ts`,
   command: () => {
+    const projectRuntime = getState(`projectRuntime`)
     if (projectRuntime == `bun`) {
       return ``
     }
     return `npm i vitest --force --save-dev`
   },
   content: ({ previousContent }: TypeParamsContent) => {
+    const projectRuntime = getState(`projectRuntime`)
     if (projectRuntime == `bun`) {
       return `import { describe, it, expect } from "bun:test"
 import contextDummy from "../src/index"
