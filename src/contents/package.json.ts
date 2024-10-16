@@ -44,6 +44,7 @@ export default {
     if (projectRuntime == `bun`) {
       obj.type = `module`
       obj.scripts.test = `bun test --watch`
+      obj.scripts.dev = `bun --watch ./src/index.ts`
       obj.scripts.start = `bun ./src/index.ts`
     }
 

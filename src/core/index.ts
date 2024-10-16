@@ -104,8 +104,16 @@ https://github.com/damartripamungkas/init-project-ts
   const answerPackageJson = resAll.find((it) => it.filename == `package.json`)
   if (answerPackageJson.answer === true) {
     // default command for install in runtime "node" like @types/node
-    const defaultCommandNode = [`npm i @types/node --force --save-dev`, `npm i -d ts-node-dev`]
-    defaultCommandNode.forEach((cmd) => {
+    const defaultCommandNode = [
+      [`node-bun`, `npm i @types/node --force --save-dev`],
+      [`node`, `npm i -d ts-node-dev`]
+    ]
+
+    defaultCommandNode.forEach((arr) => {
+      const [forRuntime, cmd] = arr
+      if (forRuntime.includes(getState(`projectRuntime`)) === false) {
+        return
+      }
       execSync(cmd, { stdio: `inherit` })
     })
     ora(`Success install default command for runtime node\n`).succeed()
