@@ -106,7 +106,7 @@ https://github.com/damartripamungkas/init-project-ts
     // default command for install in runtime "node" like @types/node
     const defaultCommandNode = [
       [`node-bun`, `npm i @types/node --force --save-dev`],
-      [`node`, `npm i -d ts-node-dev`]
+      [`node`, `npm i --save-dev ts-node-dev`]
     ]
 
     defaultCommandNode.forEach((arr) => {
