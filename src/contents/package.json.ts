@@ -17,9 +17,11 @@ export default {
       scripts: {
         build: "tsup",
         test: "vitest",
+        dev: "ts-node-dev ./src/index.ts",
         start: "node ./dist/src/index.js",
         publish_npm: "npm run build && npm publish"
       },
+      generator: "init-project-ts",
       homepage: `https://github.com/{USERNAME}/${projectName}`,
       repository: {
         type: "git",

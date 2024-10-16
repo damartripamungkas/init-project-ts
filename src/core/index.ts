@@ -104,7 +104,7 @@ https://github.com/damartripamungkas/init-project-ts
   const answerPackageJson = resAll.find((it) => it.filename == `package.json`)
   if (answerPackageJson.answer === true) {
     // default command for install in runtime "node" like @types/node
-    const defaultCommandNode = [`npm i @types/node --force --save-dev`]
+    const defaultCommandNode = [`npm i @types/node --force --save-dev`, `npm i -d ts-node-dev`]
     defaultCommandNode.forEach((cmd) => {
       execSync(cmd, { stdio: `inherit` })
     })
