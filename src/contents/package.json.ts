@@ -1,4 +1,4 @@
-import { getState } from "../libs/state"
+import state from "../libs/state"
 import { TypeParamsContent } from "../type"
 
 export default {
@@ -7,8 +7,7 @@ export default {
     return ``
   },
   content: ({ previousContent }: TypeParamsContent) => {
-    const projectName = getState(`projectName`)
-    const projectRuntime = getState(`projectRuntime`)
+    const { projectName, projectRuntime } = state
     const obj = {
       name: projectName,
       version: "1.0.0",
@@ -17,7 +16,7 @@ export default {
       scripts: {
         build: "tsup",
         test: "vitest",
-        dev: "ts-node-dev ./src/index.ts",
+        dev: "tsx watch ./src/index.ts",
         start: "node ./dist/src/index.js",
         publish_npm: "npm run build && npm publish"
       },
