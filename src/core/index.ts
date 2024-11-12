@@ -1,8 +1,8 @@
 import prompts from "prompts"
+import { join } from "node:path"
 import { execSync } from "node:child_process"
-import { basename, join } from "node:path"
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs"
-import { getState, setState } from "../libs/state"
+import state from "../libs/state"
 import allContents from "../contents/_index"
 const packageJson = require(`../../package.json`)
 
@@ -26,7 +26,7 @@ const createPrompts = async () => {
     ],
     initial: 0
   })
-  setState(`projectRuntime`, twoSelect)
+  state.projectRuntime = twoSelect
 
   const params = allContents.map((it, index) => {
     return {
@@ -52,7 +52,8 @@ const createPrompts = async () => {
   return resAll
 }
 
-const run = async () => {
+const run = async (pathRoot = process.cwd()) => {
+  state.pathRoot = pathRoot
   console.log(`
 ██╗      ██████╗    ████████╗
 ██║      ██╔══██╗   ╚══██╔══╝
@@ -80,7 +81,7 @@ https://github.com/damartripamungkas/init-project-ts
     }
 
     let readFile
-    const pathFile = join(process.cwd(), filename)
+    const pathFile = join(pathRoot, filename)
     if (existsSync(pathFile) === true) {
       readFile = JSON.parse(readFileSync(pathFile, { encoding: `utf8` }))
     }
@@ -102,16 +103,17 @@ https://github.com/damartripamungkas/init-project-ts
   }
 
   const answerPackageJson = resAll.find((it) => it.filename == `package.json`)
+  const { projectRuntime } = state
   if (answerPackageJson.answer === true) {
     // default command for install in runtime "node" like @types/node
     const defaultCommandNode = [
       [`node-bun`, `npm i @types/node --force --save-dev`],
-      [`node`, `npm i --save-dev ts-node-dev`]
+      [`node`, `npm i --save-dev tsx`]
     ]
 
     defaultCommandNode.forEach((arr) => {
       const [forRuntime, cmd] = arr
-      if (forRuntime.includes(getState(`projectRuntime`)) === false) {
+      if (forRuntime.includes(projectRuntime) === false) {
         return
       }
       execSync(cmd, { stdio: `inherit` })
@@ -119,14 +121,14 @@ https://github.com/damartripamungkas/init-project-ts
     ora(`Success install default command for runtime node\n`).succeed()
 
     // default command for install in runtime "bun" like @types/node
-    if (getState(`projectRuntime`) == `bun`) {
+    if (projectRuntime == `bun`) {
       const defaultCommandBun = [`bun i`, `bun add -d @types/bun`]
       defaultCommandBun.forEach((cmd) => {
         execSync(cmd, { stdio: `inherit` })
       })
       ora(`Success install default command for runtime bun\n`).succeed()
 
-      const pathJsonLock = join(process.cwd(), `package-lock.json`)
+      const pathJsonLock = join(pathRoot, `package-lock.json`)
       rmSync(pathJsonLock, { force: true, recursive: true })
     }
   }
@@ -135,6 +137,5 @@ https://github.com/damartripamungkas/init-project-ts
   return true
 }
 
-setState(`projectName`, basename(process.cwd()))
 export { run }
 export default run
