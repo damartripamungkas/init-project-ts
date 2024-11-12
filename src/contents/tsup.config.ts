@@ -7,6 +7,7 @@ export default {
   },
   content: ({ previousContent }: TypeParamsContent) => {
     return `import { defineConfig } from "tsup"
+    
 export default defineConfig({
   outDir: "./dist/src",
   entry: ["./src/index.ts"],
