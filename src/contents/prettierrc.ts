@@ -17,7 +17,7 @@ export default {
             }
           },
           {
-            files: "*.ts",
+            files: "*.{ts,mts}",
             options: {
               printWidth: 200,
               tabWidth: 2,
