@@ -1,4 +1,4 @@
-import { getState } from "../libs/state"
+import state from "../libs/state"
 import { TypeParamsContent } from "../type"
 
 export default {
@@ -7,7 +7,7 @@ export default {
     return ``
   },
   content: ({ previousContent }: TypeParamsContent) => {
-    const projectName = getState(`projectName`)
+    const { projectName } = state
     return `<h1 align="center">${projectName}</h1>`
   }
 }
