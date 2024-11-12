@@ -1,4 +1,4 @@
-import { getState } from "../libs/state"
+import state from "../libs/state"
 import { TypeParamsContent } from "../type"
 
 export default {
@@ -7,10 +7,9 @@ export default {
     return ``
   },
   content: ({ previousContent }: TypeParamsContent) => {
-    const projectName = getState(`projectName`)
     return `MIT License
 
-Copyright (c) 2025 ${projectName}
+Copyright (c) ${new Date().getFullYear()} ${state.projectName}
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
