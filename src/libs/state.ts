@@ -1,12 +1,7 @@
-const state: any = {}
+import { basename } from "node:path"
 
-const setState = (key: string, value: any) => {
-  state[key] = value
-  return true
+export default {
+  pathRoot: ``,
+  projectName: basename(process.cwd()),
+  projectRuntime: ``
 }
-
-const getState = (key: string) => {
-  return state[key]
-}
-
-export { setState, getState }
