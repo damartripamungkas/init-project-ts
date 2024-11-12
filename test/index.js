@@ -1,5 +1,5 @@
-const { basename } = require(`node:path`)
-const base = basename(process.cwd())
-if (base == `test`) {
+const { basename } = require("path")
+
+if (basename(process.cwd()) == `test`) {
   require(`..`)
 }
